@@ -1,0 +1,174 @@
+/* CSS Variables for color scheme and typography */
+:root {
+  /* Color palette */
+  --color-primary: #1a1a1a;
+  --color-secondary: #ffffff;
+  --color-accent: #0070f3;
+  --color-text: #333333;
+  --color-text-light: #666666;
+  --color-background: #f9f9f9;
+  --color-border: #e0e0e0;
+
+  /* Typography */
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-size-base: 16px;
+  --font-size-heading: 48px;
+  --font-size-description: 18px;
+  --font-weight-normal: 400;
+  --font-weight-bold: 600;
+
+  /* Spacing */
+  --spacing-unit: 8px;
+
+  /* Transitions */
+  --transition-duration: 0.3s;
+  --transition-timing: ease-in-out;
+}
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  line-height: 1.6;
+}
+
+/* Container and layout */
+#__next {
+  display: flex;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-unit) * 4;
+}
+
+/* Hero section - centered content */
+.hero {
+  text-align: center;
+  animation: fadeIn 0.8s var(--transition-timing);
+  max-width: 600px;
+  width: 100%;
+}
+
+/* Heading styles */
+.hero h1 {
+  font-size: var(--font-size-heading);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-unit) * 3;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+
+  /* Gradient text effect */
+  background: linear-gradient(135deg, #1a1a1a 0%, #0070f3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Description paragraph */
+.hero p {
+  font-size: var(--font-size-description);
+  color: var(--color-text-light);
+  line-height: 1.8;
+  animation: fadeInDelay 1s var(--transition-timing);
+}
+
+/* Hover effect for interactive feel */
+.hero:hover h1 {
+  transform: translateY(-4px);
+  transition: transform var(--transition-duration) var(--transition-timing);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Delayed fade-in animation for description */
+@keyframes fadeInDelay {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design - Tablet */
+@media (max-width: 768px) {
+  :root {
+    --font-size-heading: 36px;
+    --font-size-description: 16px;
+  }
+
+  main {
+    padding: var(--spacing-unit) * 3;
+  }
+
+  .hero h1 {
+    margin-bottom: var(--spacing-unit) * 2;
+  }
+}
+
+/* Responsive design - Mobile */
+@media (max-width: 480px) {
+  :root {
+    --font-size-heading: 28px;
+    --font-size-description: 14px;
+  }
+
+  main {
+    padding: var(--spacing-unit) * 2;
+  }
+
+  .hero h1 {
+    margin-bottom: var(--spacing-unit) * 1.5;
+  }
+
+  .hero p {
+    line-height: 1.6;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background-color: white;
+  }
+
+  .hero h1 {
+    color: var(--color-primary);
+  }
+}
